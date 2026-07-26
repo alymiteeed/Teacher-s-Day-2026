@@ -213,6 +213,14 @@
   .letter-paper p{ font-family:'Fraunces', serif; font-size:1.05rem; line-height:1.75; margin:0 0 1rem; color:var(--ink-soft); }
   .letter-sign{ font-family:'Caveat', cursive; font-size:1.8rem; color:var(--brick); margin-top:0.5rem; }
 
+  @media (max-width:640px){
+    .letter-paper.show{
+      max-height:60vh;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+  }
+
   /* ---------- WALL ---------- */
   .wall-form{
     display:flex; flex-wrap:wrap; gap:0.7rem;
