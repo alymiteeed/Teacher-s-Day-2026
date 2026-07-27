@@ -308,6 +308,9 @@
 
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+    /* Keep the candle-lighting confetti visible: it's a deliberate, one-time
+       celebration the user triggers on purpose, not ambient looping motion. */
+    .confetti{ animation-duration:2.8s !important; }
   }
 
   ::selection{ background:var(--marigold); color:var(--ink); }
