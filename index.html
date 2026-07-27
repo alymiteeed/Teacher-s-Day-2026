@@ -296,8 +296,15 @@
   .finale-sub{ font-size:0.95rem; color:var(--sage); opacity:0; transition:opacity 0.8s ease; }
   .finale-sub.show{ opacity:1; }
 
-  .confetti{ position:fixed; top:-20px; width:9px; height:14px; z-index:50; pointer-events:none; animation: fall linear forwards; }
+  .confetti{ position:fixed; top:-20px; width:9px; height:14px; z-index:9999; pointer-events:none; animation: fall linear forwards; border-radius:2px; }
   @keyframes fall{ to{ transform: translateY(105vh) rotate(360deg); opacity:0.9; } }
+
+  @media (min-width:641px){
+    .confetti{ width:12px; height:18px; }
+  }
+  @media (min-width:1024px){
+    .confetti{ width:14px; height:20px; }
+  }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
@@ -510,15 +517,18 @@
 
   function launchConfetti(){
     const colors = ['#E3A73F', '#C1523D', '#7FA98C', '#EFE7D2'];
-    for(let i=0;i<60;i++){
+    // More pieces on wider (desktop/laptop) screens so the burst feels just as full there
+    const pieceCount = Math.round(Math.min(140, Math.max(60, window.innerWidth / 10)));
+    for(let i=0;i<pieceCount;i++){
       const c = document.createElement('div');
       c.className = 'confetti';
       c.style.left = Math.random()*100 + 'vw';
       c.style.background = colors[Math.floor(Math.random()*colors.length)];
       c.style.animationDuration = (2.2 + Math.random()*1.6) + 's';
+      c.style.animationDelay = (Math.random()*0.3) + 's';
       c.style.opacity = 0.85 + Math.random()*0.15;
       document.body.appendChild(c);
-      setTimeout(() => c.remove(), 4200);
+      setTimeout(() => c.remove(), 4600);
     }
   }
 
