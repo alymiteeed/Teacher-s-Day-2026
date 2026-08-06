@@ -277,6 +277,28 @@
     background:linear-gradient(90deg, var(--sage), var(--marigold));
     transition:width 1.3s cubic-bezier(.3,.7,.2,1);
   }
+  .meter-row.meter-total{
+    margin-top:1.6rem;
+    padding-top:1.3rem;
+    border-top:1.5px dashed #E4D9BC;
+  }
+  .meter-row.meter-total .meter-label{
+    font-family:'Caveat', cursive;
+    font-size:1.15rem;
+    font-weight:600;
+    color:var(--brick);
+  }
+  .meter-row.meter-total .meter-track{ height:13px; }
+  .meter-row.meter-total .meter-fill{
+    background:linear-gradient(90deg, var(--marigold), var(--brick));
+  }
+  .meter-row.meter-total .meter-value{
+    width:52px;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--brick);
+  }
   .meter-value{ width:42px; flex-shrink:0; text-align:right; font-size:0.85rem; color:var(--ink-soft); }
   .meter-desc{
     display:block;
@@ -538,7 +560,7 @@
     </div>
 
     <div class="records-panel" id="recordsPanel">
-      <span class="records-panel-title">Grading her, for once</span>
+      <span class="records-panel-title">What Made You Extraordinary</span>
       <div class="meter-row">
         <div class="meter-bar">
           <span class="meter-label">Patience</span>
@@ -570,6 +592,14 @@
           <span class="meter-value" id="meterHumorVal">0%</span>
         </div>
         <span class="meter-desc">Turned even the dullest lessons into something we'd actually laugh about and remember.</span>
+      </div>
+      <div class="meter-row meter-total">
+        <div class="meter-bar">
+          <span class="meter-label">Overall Grade</span>
+          <div class="meter-track"><div class="meter-fill" id="meterTotal" data-fill="100"></div></div>
+          <span class="meter-value" id="meterTotalVal">0%</span>
+        </div>
+        <span class="meter-desc">Not because perfection exists, but because you've given your students every reason to believe in it. <br> The grades we received may fade with time, but the impact you left on us never will. </span>
       </div>
     </div>
     <p class="tap-hint">tap a stat card for the grading notes. Every number has a story.</p>
@@ -682,6 +712,7 @@
     animateMeter(document.getElementById('meterInspiration'), document.getElementById('meterInspirationVal'));
     animateMeter(document.getElementById('meterDedication'), document.getElementById('meterDedicationVal'));
     animateMeter(document.getElementById('meterHumor'), document.getElementById('meterHumorVal'));
+    animateMeter(document.getElementById('meterTotal'), document.getElementById('meterTotalVal'));
   }
 
   if(recordsSection){
