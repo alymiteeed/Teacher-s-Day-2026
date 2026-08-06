@@ -267,8 +267,9 @@
     display:block;
     margin-bottom:1.1rem;
   }
-  .meter-row{ display:flex; align-items:center; gap:0.9rem; margin-bottom:1rem; }
+  .meter-row{ margin-bottom:1.3rem; }
   .meter-row:last-child{ margin-bottom:0; }
+  .meter-bar{ display:flex; align-items:center; gap:0.9rem; }
   .meter-label{ width:120px; flex-shrink:0; font-size:0.9rem; color:var(--ink-soft); font-weight:500; }
   .meter-track{ flex:1; height:10px; background:#E4D9BC; border-radius:6px; overflow:hidden; }
   .meter-fill{
@@ -277,6 +278,19 @@
     transition:width 1.3s cubic-bezier(.3,.7,.2,1);
   }
   .meter-value{ width:42px; flex-shrink:0; text-align:right; font-size:0.85rem; color:var(--ink-soft); }
+  .meter-desc{
+    display:block;
+    margin:0.35rem 0 0 calc(120px + 0.9rem);
+    font-size:0.82rem;
+    line-height:1.45;
+    color:var(--ink-soft);
+    opacity:0.85;
+    max-width:44ch;
+  }
+  @media (max-width:520px){
+    .meter-label{ width:100px; }
+    .meter-desc{ margin-left:0; margin-top:0.3rem; }
+  }
 
   /* ---------- WALL ---------- */
   .wall-form{
@@ -526,24 +540,36 @@
     <div class="records-panel" id="recordsPanel">
       <span class="records-panel-title">Grading her, for once</span>
       <div class="meter-row">
-        <span class="meter-label">Patience</span>
-        <div class="meter-track"><div class="meter-fill" id="meterPatience" data-fill="100"></div></div>
-        <span class="meter-value" id="meterPatienceVal">0%</span>
+        <div class="meter-bar">
+          <span class="meter-label">Patience</span>
+          <div class="meter-track"><div class="meter-fill" id="meterPatience" data-fill="100"></div></div>
+          <span class="meter-value" id="meterPatienceVal">0%</span>
+        </div>
+        <span class="meter-desc">Never rushed us when we struggled, and somehow always found a new way to help until things finally made sense.</span>
       </div>
       <div class="meter-row">
-        <span class="meter-label">Inspiration</span>
-        <div class="meter-track"><div class="meter-fill" id="meterInspiration" data-fill="100"></div></div>
-        <span class="meter-value" id="meterInspirationVal">0%</span>
+        <div class="meter-bar">
+          <span class="meter-label">Inspiration</span>
+          <div class="meter-track"><div class="meter-fill" id="meterInspiration" data-fill="100"></div></div>
+          <span class="meter-value" id="meterInspirationVal">0%</span>
+        </div>
+        <span class="meter-desc">Helped us see potential in ourselves long before we were able to see it on our own.</span>
       </div>
       <div class="meter-row">
-        <span class="meter-label">Dedication</span>
-        <div class="meter-track"><div class="meter-fill" id="meterDedication" data-fill="100"></div></div>
-        <span class="meter-value" id="meterDedicationVal">0%</span>
+        <div class="meter-bar">
+          <span class="meter-label">Dedication</span>
+          <div class="meter-track"><div class="meter-fill" id="meterDedication" data-fill="100"></div></div>
+          <span class="meter-value" id="meterDedicationVal">0%</span>
+        </div>
+        <span class="meter-desc">Gave every lesson, every student, and every day the same care and effort, reminding us what commitment truly looks like.</span>
       </div>
       <div class="meter-row">
-        <span class="meter-label">Sense of Humor</span>
-        <div class="meter-track"><div class="meter-fill" id="meterHumor" data-fill="100"></div></div>
-        <span class="meter-value" id="meterHumorVal">0%</span>
+        <div class="meter-bar">
+          <span class="meter-label">Sense of Humor</span>
+          <div class="meter-track"><div class="meter-fill" id="meterHumor" data-fill="100"></div></div>
+          <span class="meter-value" id="meterHumorVal">0%</span>
+        </div>
+        <span class="meter-desc">Turned even the dullest lessons into something we'd actually laugh about and remember.</span>
       </div>
     </div>
     <p class="tap-hint">tap a stat card for the grading notes · scroll here to watch the meters fill in</p>
