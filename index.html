@@ -384,6 +384,7 @@
   @keyframes flicker{ 0%,100%{ transform:scale(1) rotate(-2deg);} 50%{ transform:scale(1.08) rotate(2deg);} }
   .candle-label{ font-size:0.8rem; color:var(--sage); margin-top:0.5rem; font-family:'Inter',sans-serif; }
 
+  .finale-intro{ font-size:0.98rem; color:var(--sage); max-width:44ch; line-height:1.65; margin:0 auto 2.4rem; }
   .finale-message{ font-family:'Caveat', cursive; font-size:clamp(1.8rem, 4vw, 2.6rem); color:var(--chalk-cream-soft); max-width:20ch; margin:1.5rem auto 0.5rem; opacity:0; transition:opacity 0.6s ease; }
   .finale-message.show{ opacity:1; }
   .finale-sub{ font-size:0.95rem; color:var(--sage); opacity:0; transition:opacity 0.8s ease; }
@@ -628,7 +629,8 @@
 <section class="finale">
   <div class="section-inner">
     <span class="eyebrow">one last thing</span>
-    <h2 class="section-title" style="color:var(--chalk-cream-soft)">Light a candle for her</h2>
+    <h2 class="section-title" style="color:var(--chalk-cream-soft)">A Flame of Appreciation</h2>
+    <p class="finale-intro">Three candles, three things we owe you: gratitude for every lesson you gave freely, respect for the patience it took to teach us, and love for the person you became to us along the way. Light them one by one.</p>
     <div class="candles" id="candles">
       <div class="candle" data-lit="false"><div class="flame"></div><div class="stick"></div><div class="candle-label">gratitude</div></div>
       <div class="candle" data-lit="false"><div class="flame"></div><div class="stick"></div><div class="candle-label">respect</div></div>
