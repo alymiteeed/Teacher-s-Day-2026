@@ -291,6 +291,22 @@
   .poem-section{ background:var(--chalkboard-dark); }
   .poem-section .eyebrow{ color:var(--marigold); }
   .poem-section .section-title{ color:var(--chalk-cream-soft); }
+  .poem-tabs{ display:flex; justify-content:center; flex-wrap:wrap; gap:0.6rem; margin-bottom:1.8rem; }
+  .poem-tab{
+    font-family:'Caveat', cursive;
+    font-size:1.15rem;
+    line-height:1;
+    padding:0.5rem 1.2rem;
+    border-radius:999px;
+    border:1.5px dashed rgba(239,231,210,0.4);
+    background:transparent;
+    color:var(--chalk-cream-soft);
+    cursor:pointer;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .poem-tab:hover{ border-color:var(--marigold); transform:translateY(-1px); }
+  .poem-tab.active{ background:var(--marigold); border-color:var(--marigold); border-style:solid; color:var(--chalkboard-dark); font-weight:700; }
   .poem-wrap{ display:flex; justify-content:center; }
   .poem-card{
     position:relative;
@@ -304,7 +320,10 @@
       repeating-linear-gradient(to bottom, transparent, transparent 40px, rgba(75,90,82,0.14) 41px);
     background-position: 0 3.4rem;
     background-repeat: repeat-y;
+    display:none;
+    animation: fadeUp 0.5s ease forwards;
   }
+  .poem-card.active{ display:block; }
   .poem-tape{
     position:absolute; top:-14px; left:50%; transform:translateX(-50%) rotate(-2deg);
     width:90px; height:30px;
@@ -342,6 +361,7 @@
   .poem-signoff{ text-align:center; font-family:'Caveat', cursive; font-size:1.3rem; color:var(--brick); margin-top:1.6rem; }
   .poem-edit-hint{ text-align:center; font-size:0.8rem; color:var(--ink-soft); opacity:0.6; margin-top:1.1rem; }
   @media (max-width:640px){
+    .poem-tab{ font-size:1.05rem; padding:0.45rem 1rem; }
     .poem-card{ padding:2.2rem 1.4rem 2rem; }
     .poem-body{ font-size:1rem; line-height:2.3rem; max-height:280px; }
   }
@@ -911,15 +931,22 @@
     <span class="eyebrow"><svg class="eyebrow-icon" viewBox="0 0 24 24"><use href="#doodle-quill"/></svg>a little something in verse</span>
     <h2 class="section-title">A Poem for You</h2>
     <svg class="title-swirl" width="140" height="18" viewBox="0 0 140 18" fill="none"><path d="M3 12C31 3 55 3 70 9C85 15 109 15 137 6" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <!--
+      Three poem "sets" the visitor can switch between using the tabs below.
+      Each .poem-card is a full poem — edit the text, titles, and tab labels freely.
+      Keep each line short inside .poem-body — line breaks there become line breaks on the page.
+    -->
+    <div class="poem-tabs" role="tablist" aria-label="Choose a poem">
+      <button type="button" class="poem-tab active" data-poem="1">Poem I</button>
+      <button type="button" class="poem-tab" data-poem="2">Poem II</button>
+      <button type="button" class="poem-tab" data-poem="3">Poem III</button>
+    </div>
     <div class="poem-wrap">
-      <div class="poem-card">
+
+      <div class="poem-card active" data-poem-card="1">
         <div class="poem-tape"></div>
         <div class="poem-quill"><svg viewBox="0 0 24 24"><use href="#doodle-quill"/></svg></div>
-        <div class="poem-title-line"><!-- optional poem title --></div>
-        <!--
-          Replace the placeholder text below with your poem for Ma'am Christine.
-          Keep each line short — line breaks here become line breaks on the page.
-        -->
+        <div class="poem-title-line"></div>
         <div class="poem-body" data-placeholder="Type your poem for her here...">C-hange may come with the years, but some memories remain.
 H-indi ko malilimutan ang mga panahong tinuruan at ginabayan mo ako.
 R-amdam ko pa rin ang kabutihan sa likod ng bawat pagtuturo mo.
@@ -931,6 +958,30 @@ N-o matter how many years pass, mananatili ang mga alaala.
 E-spesyal na alaala ka ng isang dating estudyante na hanggang ngayon ay buong pusong nagpapasalamat sa'yo. 🤍</div>
         <div class="poem-signoff">— for you, Ma'am Christine.😊</div>
       </div>
+
+      <div class="poem-card" data-poem-card="2">
+        <div class="poem-tape"></div>
+        <div class="poem-quill"><svg viewBox="0 0 24 24"><use href="#doodle-quill"/></svg></div>
+        <div class="poem-title-line"></div>
+        <div class="poem-body" data-placeholder="Type your poem for her here...">J-ust as the years have passed, the memories of your kindness have stayed.
+O-o, maaaring hindi na kami ang mga estudyanteng dating nakaupo sa iyong classroom, pero dala pa rin namin ang mga aral na iniwan mo.
+Y-akap sa puso ang bawat alaala ng panahong ikaw ang aming guro at gabay.🤍</div>
+        <div class="poem-signoff">— for you, Ma'am Christine.😊</div>
+      </div>
+
+      <div class="poem-card" data-poem-card="3">
+        <div class="poem-tape"></div>
+        <div class="poem-quill"><svg viewBox="0 0 24 24"><use href="#doodle-quill"/></svg></div>
+        <div class="poem-title-line"></div>
+        <div class="poem-body" data-placeholder="Type your poem for her here...">
+M-ga simpleng sandali noon ang ilan sa pinakamagandang alaalang dala ko hanggang ngayon.
+I-lang taon man ang lumipas, hindi nababawasan ang halaga ng mga itinuro at ipinadama mo sa amin.
+A-ng iyong mga salita, payo, at kabutihan ay naging bahagi ng aking pagkatao.
+N-ananatili ang pasasalamat ko sa gurong minsang naging bahagi ng aking kuwento.
+A-t kung sakaling maalala mo man ang iyong mga naging estudyante, sana malaman mong isa sa kanila ang patuloy na nagpapasalamat sa'yo. 🌷🤍</div>
+        <div class="poem-signoff">— for you, Ma'am Christine.😊</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1182,6 +1233,17 @@ E-spesyal na alaala ka ng isang dating estudyante na hanggang ngayon ay buong pu
       runRecordsAnimation();
     }
   }
+
+  // Poem section: switch between the 3 poem sets
+  const poemTabs = document.querySelectorAll('.poem-tab');
+  const poemCards = document.querySelectorAll('.poem-card');
+  poemTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.poem;
+      poemTabs.forEach(t => t.classList.toggle('active', t === tab));
+      poemCards.forEach(card => card.classList.toggle('active', card.dataset.poemCard === target));
+    });
+  });
 
   // Thank-you wall
   const noteForm = document.getElementById('noteForm');
